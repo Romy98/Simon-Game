@@ -1,4 +1,3 @@
-let wasClicked = false;
 
 $(".btn").on("click", function(){
     const initBackgroundColor = $(this).css("background-color");
@@ -14,12 +13,11 @@ $(".btn").on("click", function(){
     const wrongInputAudio = new Audio("/sounds/wrong.mp3");
     wrongInputAudio.play();
 
-
-    let allButtonClasses = $(".btn").attr("class");
+    let allButtonClasses = $(this).attr("class");
     let classesArray = allButtonClasses.split(" ");
     let buttonClass = classesArray[1];
     let buttonAudio = new Audio("/sounds/" + buttonClass + ".mp3");
-    buttonAudio.play();
+    buttonAudio.play();      
 });
 
 
