@@ -17,12 +17,32 @@ $(".btn").on("click", function(){
     let classesArray = allButtonClasses.split(" ");
     let buttonClass = classesArray[1];
     let buttonAudio = new Audio("/sounds/" + buttonClass + ".mp3");
-    buttonAudio.play();      
+    buttonAudio.play();
 });
 
+$("body").on("keydown", function(){
+    let count = 1;
+    $("h1").text("Level 1")
+    $(".btn").on("click", function(){
+        let randomButton = parseInt($(this).attr("id"));
+        let guessedArray = []
+        guessedArray = randomArray.push(randomButton);
+        let randomNum = Math.floor(Math.random() * 4) + 1;
+        let answerArray = []
+        answerArray = answerArray.push(randomNum);
 
-let randomNum = Math.floor(Math.random() * 4) + 1;
-let count = 1;
+        while (answerArray == guessedArray){
+            $("h1").text("Level " + count);
+            
+
+            count ++;
+        }
+
+        $("h1").text("Press A Key To Start")
+    })
+})
+
+
 
 //$("button").on("click", function(event){
    // const randomButton = parseInt(event.target.class);
