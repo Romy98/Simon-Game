@@ -23,35 +23,32 @@ $(".btn").on("click", function(){
 $("body").on("keydown", function(){
     let count = 1;
     $("h1").text("Level 1")
-    $(".btn").on("click", function(){
-        let randomButton = parseInt($(this).attr("id"));
-        let guessedArray = []
-        guessedArray = randomArray.push(randomButton);
-        let randomNum = Math.floor(Math.random() * 4) + 1;
-        let answerArray = []
-        answerArray = answerArray.push(randomNum);
-
-        while (answerArray == guessedArray){
-            $("h1").text("Level " + count);
-            
-
-            count ++;
-        }
-
-        $("h1").text("Press A Key To Start")
+    let randomNum = Math.floor(Math.random() * 4) + 1;
+    let answerArray = []
+    answerArray = answerArray.push(randomNum)
+        
+    $("#" + randomNum).fadeOut("fast", "linear", function(){
+        $("#" + randomNum).fadeIn();
+        let buttonclasses = $("#" + randomNum).attr("class");
+        let classesArray = buttonclasses.split(' ');
+        let buttonclass = classesArray[1]
+        let buttonSound = new Audio("/sounds/" + buttonclass + ".mp3");
+        buttonSound.play();
     })
 })
 
+$(".btn").on("click", function(){
+    let randomButton = parseInt($(this).attr("id"));
+    let guessedArray = []
+    guessedArray = randomArray.push(randomButton);
+    let answerArray = []
+    answerArray = answerArray.push(randomNum);
+
+    while (answerArray == guessedArray){
+        $("h1").text("Level " + count);
 
 
-//$("button").on("click", function(event){
-   // const randomButton = parseInt(event.target.class);
-    //if (randomNum != randomButton){
-      //  $("body").css("background-color", "red");
-      //  setTimeout(function() {
-    //$("body").css("background-color", "#011F3F") 
-//}, 200)
+        count ++;
+    }
+})
 
-   // }
-//})
- 
